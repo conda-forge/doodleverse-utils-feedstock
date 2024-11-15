@@ -1,5 +1,5 @@
 {% set name = "doodleverse-utils" %}
-{% set version = "0.0.35" %}
+{% set version = "0.0.37" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/doodleverse-utils-{{ version }}.tar.gz
-  sha256: b72a59af05a56721cf741a976266dfef1794e76906a13e6bbf077e9a89046f3c
+  sha256: b423118a79df5bff75666003a343430dd5b7a8883d5855113295838618bdd267
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
