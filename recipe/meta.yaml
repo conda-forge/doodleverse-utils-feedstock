@@ -1,25 +1,26 @@
+{% set python_min = "3.7" %}
 {% set name = "doodleverse-utils" %}
-{% set version = "0.0.35" %}
+{% set version = "0.0.38" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/doodleverse-utils-{{ version }}.tar.gz
-  sha256: b72a59af05a56721cf741a976266dfef1794e76906a13e6bbf077e9a89046f3c
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/doodleverse_utils-{{ version }}.tar.gz
+  sha256: a16634b453ca879a8fccffab2139a36334c9135ecb4fbc997bbc501270f13f31
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -28,6 +29,7 @@ test:
     # bogus requirement on versioneer
     # - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
